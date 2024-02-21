@@ -14,7 +14,9 @@ Based on these two metrics, we introduce the following extensions:
 4. A new metric: CCNS distance, which collapses the cumbersome CCNS matrix into a single value
 
 ## Structure of the repo:
-All implemented metrics can be found in the file ```extended_graph_metrics.py```
+- All implemented metrics can be found in the file ```extended_graph_metrics.py```
+- The ```utils.py``` file contains util functions
+- The ```main.py``` file is a notebook-style file to execute the different metrics on small example graphs
 
 
 ## References
