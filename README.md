@@ -8,10 +8,10 @@ More concretely, we extend two graph assessment metrics:
 - Cross-class neighbourhood similarity (CCNs) [2]
 
 Based on these two metrics, we introduce the following extensions:
-1. Node homophily for regression tasks
-2. Node homophily for weighted graphs
-3. Cross-class neighbourhood similarity for weighted graphs
-4. A new metric: CCNS distance, which collapses the cumbersome CCNS matrix into a single value
+1. Node homophily for regression tasks for discrete adjacency matrices
+2. Node homophily for regression tasks for continuous/weighted adjacency matrices
+5. Cross-class neighbourhood similarity for weighted graphs for classification tasks
+6. A new metric: CCNS distance, which collapses the cumbersome CCNS matrix into a single value
 
 ## Structure of the repo:
 - All implemented metrics can be found in the file ```extended_graph_metrics.py```
