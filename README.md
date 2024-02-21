@@ -21,6 +21,12 @@ Based on these two metrics, we introduce the following extensions:
 Run the cells in ```main.py``` to execute the metrics and plug in your own graphs to evaluate them!
 
 
+## Required packages
+- pytorch_geometric
+- numpy
+- torch
+- networkx
+
 ## References
 [1] Pei, Hongbin, et al. "Geom-gcn: Geometric graph convolutional networks." arXiv preprint arXiv:2002.05287 (2020).\
 [2] Ma, Yao, et al. "Is homophily a necessity for graph neural networks?." arXiv preprint arXiv:2106.06134 (2021).
