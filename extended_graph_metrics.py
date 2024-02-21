@@ -4,6 +4,7 @@ import numpy as np
 import torch
 import sys
 import torch_geometric
+import utils
 
 
 def get_cosine_similarity(vec1, vec2):
@@ -44,10 +45,10 @@ def get_cross_class_neighbourhood_similarity_discrete(edges, labels, one_hot_inp
         train_ids = torch.where(train_mask)[0]
         one_hot = one_hot[train_mask]
         # only use train nodes in case we're interested in the train set only
-        neighbours_generator = (gnn_utils.get_all_incoming_neighbours_of_node(i, edges) for i in train_ids)
+        neighbours_generator = (utils.get_all_incoming_neighbours_of_node(i, edges) for i in train_ids)
     else:
         # otherwise use full graph
-        neighbours_generator = (gnn_utils.get_all_incoming_neighbours_of_node(i, edges) for i in range(consecutive_labels.shape[0]))
+        neighbours_generator = (utils.get_all_incoming_neighbours_of_node(i, edges) for i in range(consecutive_labels.shape[0]))
 
     histogram = torch.stack([torch.bincount(consecutive_labels[neighbours], minlength=n_classes) for neighbours in neighbours_generator]).float()
 
@@ -93,7 +94,7 @@ def get_homophily_discrete(edges, nr_nodes, labels, train_mask=None):
         train_mask = train_mask.bool()
     adj_matrix = torch_geometric.utils.to_dense_adj(edges, max_num_nodes=nr_nodes).squeeze(0)
     # in case of transductive learning, you can pass a train mask and only the GNA of the training nodes will be evaluated
-    nr_same_labelled_neighbours, nr_diff_labelled_neighbours, no_neighbours_in_subset = gnn_utils.get_number_conn_same_label_different_label(adj_matrix, labels, None)
+    nr_same_labelled_neighbours, nr_diff_labelled_neighbours, no_neighbours_in_subset = utils.get_number_conn_same_label_different_label(adj_matrix, labels, None)
     ratio = nr_same_labelled_neighbours/(nr_same_labelled_neighbours + nr_diff_labelled_neighbours)
 
     ratio[torch.isinf(ratio)] = 0 
@@ -112,12 +113,10 @@ def get_homophily_continuous(weight_matrix, labels, train_mask=None):
     calculate node homophily for a graph with continuous edge weights
     """
 
-    # labels = torch.argmax(labels.squeeze(0), dim=1)
-
     if train_mask is not None  and not train_mask.dtype == torch.bool:
         train_mask = train_mask.bool()
-    same_label_matrix = gnn_utils.get_matrix_indicating_same_labels(labels)
-    diff_label_matrix = gnn_utils.get_matrix_indicating_different_labels(labels)
+    same_label_matrix = utils.get_matrix_indicating_same_labels(labels)
+    diff_label_matrix = utils.get_matrix_indicating_different_labels(labels)
 
     weights_same_labels = same_label_matrix * weight_matrix.squeeze(0)
     weights_diff_labels = diff_label_matrix * weight_matrix.squeeze(0)
@@ -190,7 +189,7 @@ def get_homophily_continuous_regression(adj_matrix, labels, train_mask=None):
   
 
 def get_ccns_distance(ccns:torch.tensor):
-  """
-  calculate the CCNS distance
-  """
+    """
+    calculate the CCNS distance
+    """
     return F.l1_loss(ccns, torch.eye(ccns.shape[0]))
