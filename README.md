@@ -1,5 +1,5 @@
 # ExtendedGAMs
-Code for the paper **"Extended Graph Assessment Metrics for Regression and Weighted Graphs"**
+Code for the paper [**"Extended Graph Assessment Metrics for Regression and Weighted Graphs"**](https://arxiv.org/pdf/2307.10112.pdf)
 
 ## Content
 We here implement extended metrics for graph assessment for more versatile applications, including regression tasks and continuous/weighted graphs.
