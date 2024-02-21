@@ -18,13 +18,15 @@ Based on these two metrics, we introduce the following extensions:
 - The ```utils.py``` file contains util functions
 - The ```main.py``` file is a notebook-style file to execute the different metrics on small example graphs
 
+Run the cells in ```main.py``` to execute the metrics and plug in your own graphs to evaluate them!
+
 
 ## References
 [1] Pei, Hongbin, et al. "Geom-gcn: Geometric graph convolutional networks." arXiv preprint arXiv:2002.05287 (2020).
 [2] Ma, Yao, et al. "Is homophily a necessity for graph neural networks?." arXiv preprint arXiv:2106.06134 (2021).
 
 
-BibTex entry:
+### BibTex entry:
 ```
 @article{mueller2023extended,
   title={Extended Graph Assessment Metrics for Graph Neural Networks},
