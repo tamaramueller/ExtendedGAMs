@@ -22,7 +22,7 @@ Run the cells in ```main.py``` to execute the metrics and plug in your own graph
 
 
 ## References
-[1] Pei, Hongbin, et al. "Geom-gcn: Geometric graph convolutional networks." arXiv preprint arXiv:2002.05287 (2020).
+[1] Pei, Hongbin, et al. "Geom-gcn: Geometric graph convolutional networks." arXiv preprint arXiv:2002.05287 (2020).\
 [2] Ma, Yao, et al. "Is homophily a necessity for graph neural networks?." arXiv preprint arXiv:2106.06134 (2021).
 
 
